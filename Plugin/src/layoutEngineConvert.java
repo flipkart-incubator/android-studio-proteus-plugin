@@ -12,6 +12,8 @@ import com.google.gson.JsonObject;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
@@ -27,6 +29,11 @@ import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.ui.awt.RelativePoint;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Created by kirankumar on 12/11/14.
@@ -38,7 +45,7 @@ public class layoutEngineConvert extends AnAction {
     public static final String INTEGER_PREFIX = "@integer/";
     public static final String COLOR_PREFIX = "@color/";
     private static final boolean FORCE_PROJECT_RESOURCE_LOADING = true;
-
+    private Set<String> skipAttributes = new HashSet<String>(Arrays.asList("xmlns:tools", "tools:context", "xmlns:tools","xmlns:android"));
 
 
     public void actionPerformed(AnActionEvent e) {
@@ -69,8 +76,8 @@ public class layoutEngineConvert extends AnAction {
         JsonObject object = recurse(rootTag);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(object);
-        System.out.print(json);
-        CodePreviewDialog dialog = new CodePreviewDialog(e.getProject(),json);
+        Document jsonDocument = EditorFactory.getInstance().createDocument(json);
+        CodePreviewDialog dialog = new CodePreviewDialog(e.getProject(),jsonDocument);
         dialog.show();
 
 
@@ -89,6 +96,11 @@ public class layoutEngineConvert extends AnAction {
 
             for (XmlAttribute attribute : attributes) {
                 //String name = attribute.getName();
+                if(skipAttributes.contains(attribute.getName()))
+                {
+
+                    continue;
+                }
                 String localName = attribute.getLocalName();
                 String value = attribute.getValue();
                 System.out.println(""+localName+" = "+value);
@@ -134,7 +146,9 @@ public class layoutEngineConvert extends AnAction {
                 JsonObject child = recurse(subTag);
                 children.add(child);
             }
-            json.add("children",children);
+            if(children.size()>0) {
+                json.add("children", children);
+            }
 
         return json;
         }
