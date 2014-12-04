@@ -1,12 +1,11 @@
 <idea-plugin version="2">
-  <id>com.yourcompany.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+  <id>com.flipkart.layoutengine</id>
+  <name>XML to JSON converter for Layout Engine Library</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="kiran.kumar@flipkart.com" url="http://www.flipkart.com">Flipkart.com</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      One click convert XML to JSON using layout engine and generate preview.
     ]]></description>
 
   <change-notes><![CDATA[
@@ -38,8 +37,8 @@
 
   <actions>
     <!-- Add your actions here -->
-      <action id="layoutEngineConvert" class="layoutEngineConvert" text="Convert to json"
-              description="uses layout engine">
+      <action id="layoutEngineConvert" class="action.ConvertToJsonAction" text="Convert XML to JSON"
+              description="Convert XML to JSON using layout engine">
           <add-to-group group-id="ToolsMenu" anchor="first"/>
       </action>
   </actions>
