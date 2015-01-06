@@ -29,58 +29,63 @@ import java.util.List;
  */
 public class Requests {
 
-    public static UploadResponse makePreUploadRequest(List<Drawable> drawables) throws IOException {
-        HttpClient httpclient = HttpClients.createDefault();
-
-        HttpPost httppost = new HttpPost(Config.RES_CHECK_URL);
-
-        Gson gson = new Gson();
-        JsonArray jsonArray = new JsonArray();
-        for (Drawable drawable : drawables) {
-
-            jsonArray.add(drawable.getAsJsonObject());
-        }
-        String json = gson.toJson(jsonArray);
-
-        List<NameValuePair> params = new ArrayList<NameValuePair>(1);
-        params.add(new BasicNameValuePair("resources", json));
-
+    public static UploadResponse makePreUploadRequest(List<Drawable> drawables) {
         try {
-            httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+            HttpClient httpclient = HttpClients.createDefault();
 
-        HttpResponse response = null;
-            response = httpclient.execute(httppost);
+            HttpPost httppost = new HttpPost(Config.RES_CHECK_URL);
 
-        HttpEntity entity = null;
-        if (response != null) {
-            entity = response.getEntity();
-        }
+            Gson gson = new Gson();
+            JsonArray jsonArray = new JsonArray();
+            for (Drawable drawable : drawables) {
 
-        if (entity != null) {
-            InputStream instream = null;
+                jsonArray.add(drawable.getAsJsonObject());
+            }
+            String json = gson.toJson(jsonArray);
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>(1);
+            params.add(new BasicNameValuePair("resources", json));
+
             try {
-                instream = entity.getContent();
-            } catch (IOException e) {
+                httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            try {
-                // do something useful
-                final BufferedReader reader =
-                        new BufferedReader(new InputStreamReader(instream));
-                UploadResponse uploadResponse = gson.fromJson(reader, UploadResponse.class);
-                return uploadResponse;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
+
+            HttpResponse response = null;
+            response = httpclient.execute(httppost);
+
+            HttpEntity entity = null;
+            if (response != null) {
+                entity = response.getEntity();
+            }
+
+            if (entity != null) {
+                InputStream instream = null;
                 try {
-                    instream.close();
+                    instream = entity.getContent();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                try {
+                    // do something useful
+                    final BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(instream));
+                    UploadResponse uploadResponse = gson.fromJson(reader, UploadResponse.class);
+                    return uploadResponse;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        instream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
+        }catch (IOException ex)
+        {
+            ex.printStackTrace();
         }
         return null;
     }
