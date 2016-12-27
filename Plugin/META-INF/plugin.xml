@@ -1,46 +1,42 @@
 <idea-plugin version="2">
-  <id>com.flipkart.layoutengine</id>
-  <name>XML to JSON converter for Layout Engine Library</name>
-  <version>1.0</version>
-  <vendor email="kiran.kumar@flipkart.com" url="http://www.flipkart.com">Flipkart.com</vendor>
+    <id>com.flipkart.android.proteus</id>
+    <name>XML to JSON converter for Proteus</name>
+    <version>1.1</version>
+    <vendor email="kiran.kumar@flipkart.com" url="http://www.flipkart.com">https://flipkart.com</vendor>
+    <vendor email="aditya.sharat@flipkart.com" url="http://www.flipkart.com">https://flipkart.com</vendor>
 
-  <description><![CDATA[
-      One click convert XML to JSON using layout engine and generate preview.
-    ]]></description>
+    <description>
+        <![CDATA[Convert XML Layout to JSON Layout]]>
+    </description>
 
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
-    ]]>
-  </change-notes>
+    <change-notes>
+        <![CDATA[ Fixes error in new Android studios version]]>
+    </change-notes>
 
-  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="131"/>
+    <idea-version since-build="131"/>
 
-  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products -->
-  <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.android</depends>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
 
-  <application-components>
-    <!-- Add your application components here -->
-  </application-components>
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
 
-  <project-components>
-    <!-- Add your project components here -->
-  </project-components>
-
-  <actions>
-    <!-- Add your actions here -->
-      <action id="layoutEngineConvert" class="action.ConvertToJsonAction" text="Convert XML to JSON"
-              description="Convert XML to JSON using layout engine">
-          <add-to-group group-id="ToolsMenu" anchor="first"/>
-      </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="proteusLayoutConverter"
+                class="action.ConvertToJsonAction"
+                text="Convert XML to JSON"
+                description="Convert XML to JSON">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 
 </idea-plugin>
