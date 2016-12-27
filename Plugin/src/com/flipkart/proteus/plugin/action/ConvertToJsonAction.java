@@ -1,6 +1,7 @@
-package action;
+package com.flipkart.proteus.plugin.action;
 
 import com.android.tools.idea.AndroidPsiUtils;
+import com.flipkart.proteus.plugin.ui.CodePreviewDialog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -22,7 +23,6 @@ import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.ui.awt.RelativePoint;
 import org.apache.commons.lang.StringEscapeUtils;
-import ui.CodePreviewDialog;
 
 import javax.annotation.Nullable;
 import java.io.PrintWriter;

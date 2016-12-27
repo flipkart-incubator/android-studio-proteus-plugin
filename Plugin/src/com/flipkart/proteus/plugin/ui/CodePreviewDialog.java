@@ -1,4 +1,4 @@
-package ui;
+package com.flipkart.proteus.plugin.ui;
 
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.event.DocumentEvent;

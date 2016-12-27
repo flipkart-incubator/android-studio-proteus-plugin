@@ -1,12 +1,11 @@
 <idea-plugin version="2">
+
     <id>com.flipkart.android.proteus</id>
-    <name>XML to JSON converter for Proteus</name>
-    <version>1.1</version>
-    <vendor email="kiran.kumar@flipkart.com" url="http://www.flipkart.com">https://flipkart.com</vendor>
-    <vendor email="aditya.sharat@flipkart.com" url="http://www.flipkart.com">https://flipkart.com</vendor>
+    <name>Proteus: Android Layout Engine Plugin</name>
+    <version>1.2</version>
 
     <description>
-        <![CDATA[Convert XML Layout to JSON Layout]]>
+        <![CDATA[ Proteus: Android Layout Engine Plugins and Tools ]]>
     </description>
 
     <change-notes>
@@ -30,13 +29,14 @@
     </project-components>
 
     <actions>
-        <!-- Add your actions here -->
-        <action id="proteusLayoutConverter"
-                class="action.ConvertToJsonAction"
-                text="Convert XML to JSON"
-                description="Convert XML to JSON">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
+        <group id="flipkart.proteus" text="Proteus" popup="true">
+            <add-to-group group-id="ToolsMenu"/>
+            <action id="proteusLayoutConverter"
+                    class="com.flipkart.proteus.plugin.action.ConvertToJsonAction"
+                    text="XML to JSON"
+                    description="Convert XML to JSON">
+            </action>
+        </group>
     </actions>
 
 </idea-plugin>
