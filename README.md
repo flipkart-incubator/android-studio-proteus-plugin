@@ -1,9 +1,15 @@
-android-studio-proteus-plugin
-==================================
+Android Studio Proteus Plugin
+===
 
-A plugin for Android studio / IntelliJ IDEA which helps you to convert XML layouts to JSON layouts required by proteus.
-In addition to converting the format, it also flattens the xml by recursively traversing the @include resources and also uploads local drawables to the endpoint specified in Config file.
+Plugin for Android studio which helps you to convert XML resources to JSON which can be used by [proteus](https://github.com/flipkart-incubator/proteus).
 
-Please note that proteus keeps getting updated with support for new Views and new Parsers, but this plugin does not validate that the views used in your xml are registered inside Proteus beforehand.
+# How to install
 
-Todo : Allow previewing of the Proteus layouts on your adb devices. 
+* Download the plugin [here](https://github.com/flipkart-incubator/android-studio-proteus-plugin/raw/master/proteus-plugin/proteus-plugin.zip)
+* Install the plugin in Android Studios
+* Restart Android Studios
+
+# How to use
+
+* Open an `XML` resource file
+* Go to `Tools` -> `Proteus` -> `XML to JSON`
