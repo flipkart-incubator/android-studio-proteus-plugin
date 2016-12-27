@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Plugin/Plugin.iml" filepath="$PROJECT_DIR$/Plugin/Plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proteus-plugin/proteus-plugin.iml" filepath="$PROJECT_DIR$/proteus-plugin/proteus-plugin.iml" />
     </modules>
   </component>
 </project>

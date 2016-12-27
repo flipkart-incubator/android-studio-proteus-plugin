@@ -30,6 +30,7 @@
 
     <actions>
         <group id="flipkart.proteus" text="Proteus" popup="true">
+            <!-- we should add to "EditorPopupMenu" -->
             <add-to-group group-id="ToolsMenu"/>
             <action id="proteusLayoutConverter"
                     class="com.flipkart.proteus.plugin.action.ConvertToJsonAction"
